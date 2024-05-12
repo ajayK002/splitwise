@@ -1,15 +1,12 @@
 package com.splitwise.SplitWise.services;
 
 import com.splitwise.SplitWise.dtos.RegisterUserRequestDto;
-import com.splitwise.SplitWise.dtos.RegisterUserResponseDto;
-import com.splitwise.SplitWise.dtos.ResponseStatus;
 import com.splitwise.SplitWise.models.User;
 import com.splitwise.SplitWise.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -22,7 +19,7 @@ public class UserService {
         newUser.setMobileNumber(registerUserRequestDto.getMobileNumber());
         newUser.setPassword(registerUserRequestDto.getPassword());
         newUser.setCreatedAt(new Date());
-        newUser.setUpdatedAt(new Date());
+        newUser.setLastUpdatedAt(new Date());
 
         return userRepository.save(newUser);
     }

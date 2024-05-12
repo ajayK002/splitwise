@@ -1,9 +1,6 @@
 package com.splitwise.SplitWise.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,12 +13,18 @@ public class Expense extends BaseModel{
     private String description;
     private Long amount;
 
+    @ManyToOne
+    private User createdBy;
+
+    @ManyToOne
+    private Group group;
+
     @Enumerated(value = EnumType.STRING)
     private ExpenseType expenseType;
 
-    @OneToMany
-    private List<ExpenseUser> paidByUsers;
+    @OneToMany(mappedBy = "expense")
+    private List<ExpenseUser> expenseUsers;
 
-    @OneToMany
-    private List<ExpenseUser> hadToPayUsers;
+//    @OneToMany(mappedBy = "expense")
+//    private List<ExpenseUser> hadToPayUsers;
 }

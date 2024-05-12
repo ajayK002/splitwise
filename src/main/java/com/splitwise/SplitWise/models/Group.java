@@ -3,12 +3,13 @@ package com.splitwise.SplitWise.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
 
-@Entity
+@Entity(name = "groupss")
 @Getter
 @Setter
 public class Group extends BaseModel{
@@ -18,6 +19,9 @@ public class Group extends BaseModel{
     private User createdBy;
 
     @ManyToMany
-    private List<User> userList;
+    private List<User> users;
+
+    @OneToMany(mappedBy = "group")
+    private List<Expense> expenses;
 
 }

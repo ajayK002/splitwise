@@ -11,13 +11,9 @@ import java.util.Scanner;
 @SpringBootApplication
 public class SplitWiseApplication implements CommandLineRunner {
 
+	@Autowired
 	private CommandExecutor commandExecutor;
 	private Scanner scanner = new Scanner(System.in);
-
-	@Autowired
-	public SplitWiseApplication(CommandExecutor commandExecutor){
-		this.commandExecutor = commandExecutor;
-	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(SplitWiseApplication.class, args);
